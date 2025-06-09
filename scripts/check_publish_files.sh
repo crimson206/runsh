@@ -2,7 +2,7 @@
 
 # @description: Check files that will be included in Python package publish
 # @arg project_path [optional] [default=.]: Project directory path
-# @option verbose,v [flag]: Show detailed build output and file info
+# @option verbose [flag]: Show detailed build output and file info
 # @option build-only,b [flag]: Only build package, don't check contents
 
 # USER SETTING

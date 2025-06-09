@@ -1,5 +1,5 @@
 [project]
-name = "my-scripts"
+name = "runsh"
 version = "0.1.0"
 description = ""
 authors = [
@@ -12,4 +12,4 @@ dependencies = [
 ]
 
 [project.scripts]
-script-runner= "script_runner.cli_runner:main"
+runsh= "runsh.cli:main"

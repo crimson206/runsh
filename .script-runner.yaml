@@ -1,0 +1,5 @@
+# Script Runner Configuration
+# See https://github.com/your-repo/script-runner for documentation
+
+default_shell: bash
+scripts_dir: scripts
