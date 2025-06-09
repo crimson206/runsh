@@ -2,8 +2,10 @@
 
 from .script_command import ScriptCommand
 from .config_command import ConfigCommand
+from .cache_command import CacheCommand
 
 __all__ = [
     'ScriptCommand',
-    'ConfigCommand'
+    'ConfigCommand',
+    'CacheCommand'
 ]
