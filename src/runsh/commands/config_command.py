@@ -9,7 +9,7 @@ from ..config import Config, create_sample_config, show_config_info
 class ConfigCommand(Command):
     """설정 관련 명령어"""
 
-    name = "config"
+    name = "config-rs"
     description = "Manage script-runner configuration"
 
     arguments = [

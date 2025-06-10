@@ -12,7 +12,7 @@ from ..constants import RUNSH_DIR, CACHE_DIR, CACHE_METADATA_FILE
 class CacheCommand(Command):
     """캐시 관리 명령어"""
     
-    name = "cache"
+    name = "cache-rs"
     description = "Manage script cache"
     
     arguments = [

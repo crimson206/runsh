@@ -6,7 +6,7 @@ from pathlib import Path
 from cleo.application import Application
 
 from .parser import parse_script_metadata
-from .commands import ScriptCommand, ConfigCommand, CacheCommand 
+from .commands import ScriptCommand, ConfigCommand, CacheCommand, DebugCommand
 from .config import Config
 
 def discover_scripts() -> Application:
@@ -19,6 +19,8 @@ def discover_scripts() -> Application:
     # 내장 명령어 추가
     app.add(ConfigCommand())
     app.add(CacheCommand())
+    app.add(DebugCommand())
+
     
     if not config.is_available():
         print(f"Scripts source not available: {config.get_scripts_dir()}")
