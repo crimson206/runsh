@@ -1,6 +1,6 @@
 [project]
 name = "runsh"
-version = "2.0.0"
+version = "2.0.1"
 description = "Transform your shell scripts into powerful CLI tools with autocomplete, help messages, and argument validation"
 authors = [
     {name = "Sisung Kim",email = "sisung.kim1@gmail.com"}
