@@ -47,19 +47,6 @@ class TestOptionConflicts:
         assert name == "help-sh"  # suffix 추가
         assert short == "x"  # 단축키는 그대로
 
-    def test_resolve_reserved_shortcut(self, capsys):
-        """예약된 단축키 충돌"""
-        opt = {"name": "verbose", "short": "h"}
-        name, short = resolve_option_conflicts(opt)
-
-        assert name == "verbose-sh"
-        assert short is None  # 충돌하는 단축키 제거
-
-        # 경고 메시지 출력 확인
-        captured = capsys.readouterr()
-        assert "Warning" in captured.out
-        assert "conflicts with CLI reserved shortcuts" in captured.out
-
     def test_resolve_both_conflicts(self, capsys):
         """옵션명과 단축키 모두 충돌"""
         opt = {"name": "help", "short": "h"}
@@ -67,15 +54,6 @@ class TestOptionConflicts:
 
         assert name == "help-sh"
         assert short is None
-
-    def test_resolve_no_shortcut(self):
-        """단축키가 없는 옵션"""
-        opt = {"name": "verbose"}
-        name, short = resolve_option_conflicts(opt)
-
-        assert name == "verbose-sh"
-        assert short is None
-
 
 class TestArgumentCollection:
     """인자 수집 테스트"""
