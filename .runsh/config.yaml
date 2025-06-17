@@ -4,4 +4,4 @@
 #   scripts_dir: 'https://github.com/user/repo/tree/main/scripts'  # GitHub
 
 default_shell: bash
-scripts_dir: scripts
+scripts_dir: https://github.com/crimson206/my-scripts/tree/main/scripts/temp
