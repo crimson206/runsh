@@ -1,3 +1,7 @@
+---
+version = "2.0.2"
+---
+
 # Configuration
 
 Complete guide to configuring RunSH for your needs.
