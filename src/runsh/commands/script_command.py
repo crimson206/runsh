@@ -78,14 +78,12 @@ class ScriptCommand(Command):
     def handle(self):
         # arguments를 순서대로 수집
         script_args = collect_script_arguments(
-            self.script_meta.get("args", []), 
-            self.argument
+            self.script_meta.get("args", []), self.argument
         )
 
         # options를 환경변수로 전달
         env = prepare_script_environment(
-            self.script_meta.get("options", []),
-            self.option
+            self.script_meta.get("options", []), self.option
         )
 
         # 임시 스크립트 생성 및 실행

@@ -1,3 +1,8 @@
+---
+version: 1.0.0
+---
+
+
 # Examples
 
 Real-world RunSH usage examples for various scenarios and workflows.

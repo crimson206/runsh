@@ -1,3 +1,7 @@
+---
+version = "1.0.0"
+---
+
 # RunSH
 
 Transform your shell scripts into powerful CLI tools with autocomplete, help messages, and argument validation.

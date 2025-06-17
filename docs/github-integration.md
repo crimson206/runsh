@@ -1,3 +1,8 @@
+---
+version: 1.0.0
+---
+
+
 # GitHub Integration
 
 Use scripts directly from GitHub repositories with automatic caching and team collaboration.

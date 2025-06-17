@@ -1,3 +1,8 @@
+---
+version: 1.0.0
+---
+
+
 # Cache Management
 
 Understand and optimize RunSH's caching system for better performance and offline usage.

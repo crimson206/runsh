@@ -18,10 +18,10 @@ from ..constants import (
 def resolve_option_conflicts(opt: dict) -> Tuple[str, str]:
     """
     Cleo 예약 옵션/단축키 충돌 해결
-    
+
     Args:
         opt: 옵션 정의 딕셔너리
-        
+
     Returns:
         (option_name, short): 충돌이 해결된 옵션명과 단축키
     """
@@ -47,11 +47,11 @@ def resolve_option_conflicts(opt: dict) -> Tuple[str, str]:
 def collect_script_arguments(args_metadata: List[dict], argument_getter) -> List[str]:
     """
     CLI arguments 수집
-    
+
     Args:
         args_metadata: 인자 메타데이터 리스트
         argument_getter: 인자 값을 가져오는 함수 (보통 self.argument)
-        
+
     Returns:
         수집된 인자 값들의 리스트
     """
@@ -63,14 +63,16 @@ def collect_script_arguments(args_metadata: List[dict], argument_getter) -> List
     return script_args
 
 
-def prepare_script_environment(options_metadata: List[dict], option_getter) -> Dict[str, str]:
+def prepare_script_environment(
+    options_metadata: List[dict], option_getter
+) -> Dict[str, str]:
     """
     스크립트 실행을 위한 환경변수 준비
-    
+
     Args:
         options_metadata: 옵션 메타데이터 리스트
         option_getter: 옵션 값을 가져오는 함수 (보통 self.option)
-        
+
     Returns:
         환경변수 딕셔너리
     """
@@ -100,10 +102,10 @@ def prepare_script_environment(options_metadata: List[dict], option_getter) -> D
 def remove_existing_runner_block(content: str) -> str:
     """
     기존 SCRIPT-RUNNER 블록 제거
-    
+
     Args:
         content: 스크립트 내용
-        
+
     Returns:
         SCRIPT-RUNNER 블록이 제거된 내용
     """
@@ -114,10 +116,10 @@ def remove_existing_runner_block(content: str) -> str:
 def generate_runner_block(script_metadata: dict) -> str:
     """
     SCRIPT-RUNNER 블록 생성
-    
+
     Args:
         script_metadata: 스크립트 메타데이터 (args, options 포함)
-        
+
     Returns:
         생성된 SCRIPT-RUNNER 블록 문자열
     """
@@ -133,13 +135,13 @@ def generate_runner_block(script_metadata: dict) -> str:
             # value 옵션: 환경변수 → CLI → 기본값
             default = opt.get("default", "")
             if default:
+                # ${VAR:-${CLI_VAR:-default}} 형태로 생성
                 runner_block += (
-                    f"{var_name}=${{${var_name}:-${{CLI_{var_name}:-{default}}}}}\n"
+                    f"{var_name}=${{{var_name}:-${{CLI_{var_name}:-{default}}}}}\n"
                 )
             else:
-                runner_block += (
-                    f"{var_name}=${{${var_name}:-${{CLI_{var_name}}}}}\n"
-                )
+                # ${VAR:-${CLI_VAR}} 형태로 생성
+                runner_block += f"{var_name}=${{{var_name}:-${{CLI_{var_name}}}}}\n"
 
     # 인자들
     for i, arg in enumerate(script_metadata.get("args", []), 1):
@@ -154,11 +156,11 @@ def generate_runner_block(script_metadata: dict) -> str:
 def insert_runner_block(content: str, runner_block: str) -> str:
     """
     적절한 위치에 SCRIPT-RUNNER 블록 삽입
-    
+
     Args:
         content: 원본 스크립트 내용
         runner_block: 삽입할 SCRIPT-RUNNER 블록
-        
+
     Returns:
         SCRIPT-RUNNER 블록이 삽입된 스크립트 내용
     """
@@ -171,11 +173,11 @@ def insert_runner_block(content: str, runner_block: str) -> str:
 def insert_after_user_setting(content: str, runner_block: str) -> str:
     """
     USER SETTING 섹션 다음에 삽입
-    
+
     Args:
         content: 원본 스크립트 내용
         runner_block: 삽입할 블록
-        
+
     Returns:
         블록이 삽입된 스크립트 내용
     """
@@ -212,11 +214,11 @@ def insert_after_user_setting(content: str, runner_block: str) -> str:
 def insert_after_shebang(content: str, runner_block: str) -> str:
     """
     shebang 다음에 삽입
-    
+
     Args:
         content: 원본 스크립트 내용
         runner_block: 삽입할 블록
-        
+
     Returns:
         블록이 삽입된 스크립트 내용
     """
@@ -231,14 +233,14 @@ def insert_after_shebang(content: str, runner_block: str) -> str:
 def create_temp_script_file(content: str, prefix: str = TEMP_SCRIPT_PREFIX) -> str:
     """
     임시 스크립트 파일 생성
-    
+
     Args:
         content: 스크립트 내용
         prefix: 임시 파일명 접두사
-        
+
     Returns:
         생성된 임시 파일 경로
-        
+
     Raises:
         Exception: 파일 생성 실패 시
     """
@@ -261,11 +263,11 @@ def create_temp_script_file(content: str, prefix: str = TEMP_SCRIPT_PREFIX) -> s
 def transform_script_content(script_path: str, script_metadata: dict) -> str:
     """
     스크립트 내용을 변형하여 SCRIPT-RUNNER 블록 추가
-    
+
     Args:
         script_path: 원본 스크립트 파일 경로
         script_metadata: 스크립트 메타데이터
-        
+
     Returns:
         변형된 스크립트 내용
     """
@@ -287,11 +289,11 @@ def transform_script_content(script_path: str, script_metadata: dict) -> str:
 def create_transformed_temp_script(script_path: str, script_metadata: dict) -> str:
     """
     원본 스크립트에서 SCRIPT-RUNNER 블록을 추가한 임시 스크립트 생성
-    
+
     Args:
         script_path: 원본 스크립트 파일 경로
         script_metadata: 스크립트 메타데이터
-        
+
     Returns:
         생성된 임시 스크립트 파일 경로
     """

@@ -1,3 +1,8 @@
+---
+version: 1.0.0
+---
+
+
 # Script Syntax Reference
 
 Complete guide to RunSH metadata comments and variable handling.

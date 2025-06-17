@@ -15,11 +15,11 @@ from .parser import parse_script_metadata
 from .config import Config
 
 __all__ = [
-    'main',
-    'discover_scripts', 
-    'ScriptCommand',
-    'ConfigCommand',
-    'CacheCommand',
-    'parse_script_metadata',
-    'Config'
+    "main",
+    "discover_scripts",
+    "ScriptCommand",
+    "ConfigCommand",
+    "CacheCommand",
+    "parse_script_metadata",
+    "Config",
 ]

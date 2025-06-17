@@ -1,3 +1,8 @@
+---
+version: 1.0.0
+---
+
+
 # Getting Started
 
 This guide will walk you through installing RunSH and creating your first script.
