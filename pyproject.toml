@@ -1,6 +1,6 @@
 [project]
 name = "runsh"
-version = "2.0.2"
+version = "2.0.4"
 description = "Transform your shell scripts into powerful CLI tools with autocomplete, help messages, and argument validation"
 authors = [
     {name = "Sisung Kim",email = "sisung.kim1@gmail.com"}
@@ -8,7 +8,9 @@ authors = [
 readme = "README.md"
 requires-python = ">=3.10,<4.0"
 dependencies = [
-    "cleo (>=2.1.0,<3.0.0)"
+    "cleo (>=2.1.0,<3.0.0)",
+    "PyYAML (>=6.0,<7.0)",
+    "requests (>=2.28.0,<3.0.0)"
 ]
 
 [project.scripts]

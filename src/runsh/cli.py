@@ -10,6 +10,15 @@ from .commands import ScriptCommand, ConfigCommand, CacheCommand, DebugCommand
 from .config import Config
 
 
+def get_version():
+    """pyproject.toml에서 버전을 동적으로 읽어오기"""
+    try:
+        import importlib.metadata
+        return importlib.metadata.version("runsh")
+    except ImportError:
+        return "unknown"
+
+
 def discover_scripts() -> Application:
     """설정된 소스에서 스크립트들을 찾아서 명령어로 등록"""
     # 설정 로딩
@@ -57,7 +66,7 @@ def _show_setup_instructions(config: Config):
 
 def create_application() -> Application:
     """기본 Application 인스턴스 생성"""
-    return Application("script-runner", "1.0.0")
+    return Application("runsh", get_version())
 
 
 def register_script_commands(app: Application, config: Config) -> int:
